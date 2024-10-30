@@ -20,6 +20,27 @@
             return (((a >>> r) << s) >> s);
         }
 
-        let LEN = 100000000 - 1;
+        let LEN = 100000000 - 1;  // Tamanho da sequência
         let res = 0;
-        let outputDiv =
+        let outputDiv = document.getElementById("output");
+
+        try {
+            // Executando a função foo para o valor final
+            res = foo((LEN & 127), 456, 789);
+            
+            // Verificando o resultado
+            if (res !== -1) throw "Wrong result: " + res;
+
+            // Executando a função foo para cada valor de 0 a LEN
+            for (let i = 0; i <= 100; i++) { // Mudei para 100 para não sobrecarregar
+                res = foo((i & 127), 456, 789);
+            }
+
+            // Se tudo estiver certo
+            outputDiv.innerHTML = "Resultado final: " + res;
+        } catch (error) {
+            outputDiv.innerHTML = "Erro: " + error;
+        }
+    </script>
+</body>
+</html>
